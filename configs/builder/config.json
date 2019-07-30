@@ -19,5 +19,5 @@
     "TEST": "com.mi.demo.test"
   },
   "DESCRIPTION": "MI HOME's project",
-  "ICON": "../../resources/icon.ico"
+  "ICON": "./resources/icon.ico"
 }

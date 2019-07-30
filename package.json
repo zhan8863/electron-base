@@ -1,5 +1,5 @@
 {
-  "name": "electron-react-boilerplate",
+  "name": "electron-base",
   "version": "0.17.1",
   "description": "Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development",
   "scripts": {
@@ -21,6 +21,7 @@
     "package-win": "yarn build && electron-builder build --win --x64",
     "package-mac": "yarn build && electron-builder build -m",
     "package-mac:T": "yarn build && npm run clean && babel-node ./configs/builder/mac.builder.config.js",
+    "package-win:T": "npm run clean && babel-node ./configs/builder/win.builder.config.js",
     "postlint-fix": "prettier --ignore-path .eslintignore --single-quote --write '**/*.{js,jsx,json,html,css,less,scss,yml}'",
     "postlint-styles-fix": "prettier --ignore-path .eslintignore --single-quote --write '**/*.{css,scss}'",
     "preinstall": "node ./internals/scripts/CheckYarn.js",

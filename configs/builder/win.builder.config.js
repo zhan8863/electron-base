@@ -1,6 +1,6 @@
 import { Platform, build, Arch } from 'electron-builder'
 import CONFIG from './config.json'
-const platform = Platform.MAC
+const platform = Platform.WINDOWS
 
 const isTest = true
 const config = () => {
