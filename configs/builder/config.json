@@ -1,0 +1,23 @@
+{
+  "VERSION": {
+    "TEST": "0.0.1",
+    "RELEASE": "0.0.1"
+  },
+  "UPDATE_URL": {
+    "RELEASE": "",
+    "TEST": ""
+  },
+  "AUTHOR": {
+    "name": "XIAOMI"
+  },
+  "PRODUCT_NAME": {
+    "RELEASE": "DEMO",
+    "TEST": "DEMO(TEST)"
+  },
+  "APP_ID": {
+    "RELEASE": "com.mi.demo",
+    "TEST": "com.mi.demo.test"
+  },
+  "DESCRIPTION": "MI HOME's project",
+  "ICON": "../../resources/icon.ico"
+}
