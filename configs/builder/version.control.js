@@ -6,8 +6,6 @@ const path = require('path')
 export default function () {
   const isTest = process.env.NODE_ENV !== 'production'
   console.log('is testing mode?:',isTest)
-  // const currentConfig = CONFIG[process.env.PACKAGE_VER || 'default']
-
   packageJSON.version = isTest ? CONFIG.VERSION.TEST : CONFIG.VERSION.RELEASE
   packageJSON.productName = isTest ? CONFIG.PRODUCT_NAME.TEST : CONFIG.PRODUCT_NAME.RELEASE
   packageJSON.name = isTest ? CONFIG.PRODUCT_NAME.TEST.toLowerCase() : CONFIG.PRODUCT_NAME.RELEASE.toLowerCase()

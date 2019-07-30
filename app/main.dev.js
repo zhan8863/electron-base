@@ -15,27 +15,28 @@ import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 
+let mainWindow = null;
 export default class AppUpdater {
   constructor() {
     log.transports.file.level = 'info';
     autoUpdater.logger = log;
     autoUpdater.on('checking-for-update', ()=> {
-      console.log('checking-for-update')
+      mainWindow && mainWindow.webContents.send('checking-for-update')
     })
     autoUpdater.on('update-available', (ev, info)=> {
-      console.log(`update-available:${JSON.stringify(info)}`)
+      mainWindow && mainWindow.webContents.send('update-available')
     })
     autoUpdater.on('update-not-available', (ev, info)=> {
-      console.log(`update-not-available:${JSON.stringify(ev)}${JSON.stringify(info)}`)
+      mainWindow && mainWindow.webContents.send('update-not-available')
     })
     autoUpdater.on('error', (ev, err) => {
-      console.log('update-error', ev, err)
+      mainWindow && mainWindow.webContents.send('update-error')
     })
     autoUpdater.on('download-progress', (progressObj)=> {
-      console.log('download-progress--->>>>', JSON.stringify(progressObj), Math.floor(progressObj.percent))
+      mainWindow && mainWindow.webContents.send('download-progress', progressObj)
     })
     autoUpdater.on('update-downloaded', ()=> {
-      console.log('Update downloaded; will install in 1 seconds')
+      mainWindow && mainWindow.webContents.send('update-downloaded')
       setTimeout(() => {
         autoUpdater.quitAndInstall()
       },         1000)
@@ -44,8 +45,6 @@ export default class AppUpdater {
     autoUpdater.checkForUpdatesAndNotify();
   }
 }
-
-let mainWindow = null;
 
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
