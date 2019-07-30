@@ -12,6 +12,7 @@
  */
 import { app, BrowserWindow, globalShortcut } from 'electron';
 import { autoUpdater } from 'electron-updater';
+import initListener from './main/listener'
 import log from 'electron-log';
 import MenuBuilder from './menu';
 
@@ -113,8 +114,10 @@ app.on('ready', async ()=> {
     try {
       BrowserWindow.getFocusedWindow().webContents.toggleDevTools()
     } catch (e) {
+      console.log(e)
     }
   })
+  initListener()
   mainWindow.on('closed', ()=> {
     mainWindow = null;
   });

@@ -6,7 +6,6 @@ import styles from './Home.css';
 import { remote } from 'electron'
 import Button from '@hi-ui/hiui/es/button'
 import { ipcRenderer } from 'electron'
-import { autoUpdater } from 'electron-updater'
 
 export default class Home extends Component {
   constructor () {
@@ -46,14 +45,15 @@ export default class Home extends Component {
     })
   }
   checkEvent () {
-    console.log('swsj ')
-    autoUpdater.checkForUpdatesAndNotify()
+    console.log('swsj ', remote.app)
+    ipcRenderer.send('request_CHECK_UPDATE')
+    // autoUpdater.checkForUpdatesAndNotify()
   }
   render() {
     return (
       <div className={styles.container} data-tid="container">
         <h2>Home!!</h2>
-        <Button type="primary" onClick={this.checkEvent.bind(this)}>检查更新</Button>
+        <Button type="primary" onClick={this.checkEvent.bind(this)}>检查更新!</Button>
         <h3>{this.state.tips}</h3>
         <p>当前版本号：{remote.app.getVersion()}</p>
         <Link to={routes.COUNTER}>to Counter!!!@!</Link>
