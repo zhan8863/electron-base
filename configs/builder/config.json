@@ -1,11 +1,11 @@
 {
   "VERSION": {
-    "TEST": "0.0.1",
+    "TEST": "0.0.3",
     "RELEASE": "0.0.1"
   },
   "UPDATE_URL": {
-    "RELEASE": "",
-    "TEST": ""
+    "RELEASE": "http://cnbj1-inner-fds.api.xiaomi.net/electron-update/release/",
+    "TEST": "http://cnbj1-inner-fds.api.xiaomi.net/electron-update/test/"
   },
   "AUTHOR": {
     "name": "XIAOMI"

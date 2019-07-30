@@ -1,9 +1,11 @@
 import { Platform, build, Arch } from 'electron-builder'
 import CONFIG from './config.json'
+import VersionControl from './version.control.js'
 const platform = Platform.WINDOWS
 
 const isTest = true
 const config = () => {
+  VersionControl()
   return {
     targets: platform.createTarget(null, Arch.ia32),
     config: {
