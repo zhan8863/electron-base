@@ -62,18 +62,20 @@ export default class Home extends Component {
     )
 
     return (
-      <Theme
-        routes={routeConfig}
-        logo={logo}
-        type='genuine'
-      />
-      // <div className={styles.container} data-tid="container">
-      //   <h2>Home!!</h2>
-      //   <Button type="primary" onClick={this.checkEvent.bind(this)}>检查更新!</Button>
-      //   <h3>{this.state.tips}</h3>
-      //   <p>当前版本号：{remote.app.getVersion()}</p>
-      //   <Link to={routes.COUNTER}>to Counter!!!@!</Link>
-      // </div>
+      //  下面的代码是简单示例
+      <div className={styles.container} data-tid="container">
+        <h2>Home!!</h2>
+        <Button type="primary" onClick={this.checkEvent.bind(this)}>检查更新(在 develop 模式下无效，需打包后)</Button>
+        <h3>{this.state.tips}</h3>
+        <p>当前版本号：{remote.app.getVersion()}</p>
+        <Link to={routes.COUNTER}>to Counter!!!@!</Link>
+      </div>
+      // 下面的 Theme 是 HIUI 主题的写法，可将上面的代码注释掉，换成下面的，查看 HIUI 主题的写法
+      // <Theme
+      //   routes={routeConfig}
+      //   logo={logo}
+      //   type='genuine'
+      // />
     );
   }
 }
