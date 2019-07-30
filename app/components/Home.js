@@ -6,6 +6,8 @@ import styles from './Home.css';
 import { remote } from 'electron'
 import Button from '@hi-ui/hiui/es/button'
 import { ipcRenderer } from 'electron'
+import { Theme, Logo } from '@hi-ui/classic-theme'
+import routeConfig from './routeConfig'
 
 export default class Home extends Component {
   constructor () {
@@ -45,19 +47,33 @@ export default class Home extends Component {
     })
   }
   checkEvent () {
-    console.log('swsj ', remote.app)
     ipcRenderer.send('request_CHECK_UPDATE')
     // autoUpdater.checkForUpdatesAndNotify()
   }
   render() {
+    const logo = (
+      <Logo
+        url='https://xiaomi.github.io/hiui/#/'
+        logoUrl='https://xiaomi.github.io/hiui/static/img/logo.png?241e0618fe55d933c280e38954edea05'
+        text='HIUI Demo'
+        title='HIUI Classic Theme Demo'
+        alt='Project Logo'
+      />
+    )
+
     return (
-      <div className={styles.container} data-tid="container">
-        <h2>Home!!</h2>
-        <Button type="primary" onClick={this.checkEvent.bind(this)}>检查更新!</Button>
-        <h3>{this.state.tips}</h3>
-        <p>当前版本号：{remote.app.getVersion()}</p>
-        <Link to={routes.COUNTER}>to Counter!!!@!</Link>
-      </div>
+      <Theme
+        routes={routeConfig}
+        logo={logo}
+        type='genuine'
+      />
+      // <div className={styles.container} data-tid="container">
+      //   <h2>Home!!</h2>
+      //   <Button type="primary" onClick={this.checkEvent.bind(this)}>检查更新!</Button>
+      //   <h3>{this.state.tips}</h3>
+      //   <p>当前版本号：{remote.app.getVersion()}</p>
+      //   <Link to={routes.COUNTER}>to Counter!!!@!</Link>
+      // </div>
     );
   }
 }

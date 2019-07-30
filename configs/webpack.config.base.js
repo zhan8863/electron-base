@@ -4,20 +4,22 @@
 
 import path from 'path';
 import webpack from 'webpack';
-import { dependencies } from '../package.json';
+// import { dependencies } from '../package.json';
 
 export default {
-  externals: [...Object.keys(dependencies || {})],
+  // externals: [...Object.keys(dependencies || {})],
 
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
+        // exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
-            cacheDirectory: true
+            cacheDirectory: true,
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+            plugins: ['@babel/plugin-proposal-class-properties'],
           }
         }
       }
@@ -25,9 +27,9 @@ export default {
   },
 
   output: {
-    path: path.join(__dirname, '..', 'app'),
+    path: path.join(__dirname, '..', 'app')
     // https://github.com/webpack/webpack/issues/1114
-    libraryTarget: 'commonjs2'
+    // libraryTarget: 'var'
   },
 
   /**
