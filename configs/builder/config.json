@@ -1,6 +1,6 @@
 {
   "VERSION": {
-    "TEST": "0.0.3",
+    "TEST": "0.0.7",
     "RELEASE": "0.0.1"
   },
   "UPDATE_URL": {
@@ -8,7 +8,7 @@
     "TEST": "http://cnbj1-inner-fds.api.xiaomi.net/electron-update/test/"
   },
   "AUTHOR": {
-    "name": "XIAOMI"
+    "name": "XIAOMIFE"
   },
   "PRODUCT_NAME": {
     "RELEASE": "DEMO",

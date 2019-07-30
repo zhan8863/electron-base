@@ -1,7 +1,10 @@
 {
 	"name": "demo(test)",
-	"version": "0.0.3",
+	"version": "0.0.7",
 	"description": "MI HOME's project",
+	"author": {
+		"name": "XIAOMIFE"
+	},
 	"scripts": {
 		"build": "concurrently \"yarn build-main\" \"yarn build-renderer\"",
 		"build-dll": "cross-env NODE_ENV=development webpack --config ./configs/webpack.config.renderer.dev.dll.babel.js --colors",
@@ -20,8 +23,8 @@
 		"package-linux": "yarn build && electron-builder build --linux",
 		"package-win": "yarn build && electron-builder build --win --x64",
 		"package-mac": "yarn build && electron-builder build -m",
-		"package-mac:T": "cross-env NODE_ENV=development yarn build && npm run clean && babel-node ./configs/builder/mac.builder.config.js",
-		"package-win:T": "cross-env NODE_ENV=development yarn build && npm run clean && babel-node ./configs/builder/win.builder.config.js",
+		"package-mac:T": "cross-env NODE_ENV=development yarn build && babel-node ./configs/builder/mac.builder.config.js",
+		"package-win:T": "cross-env NODE_ENV=development yarn build  && babel-node ./configs/builder/win.builder.config.js",
 		"postlint-fix": "prettier --ignore-path .eslintignore --single-quote --write '**/*.{js,jsx,json,html,css,less,scss,yml}'",
 		"postlint-styles-fix": "prettier --ignore-path .eslintignore --single-quote --write '**/*.{css,scss}'",
 		"preinstall": "node ./internals/scripts/CheckYarn.js",
@@ -58,44 +61,9 @@
 			"app/main.prod.js.map",
 			"package.json"
 		],
-		"dmg": {
-			"contents": [
-				{
-					"x": 130,
-					"y": 220
-				},
-				{
-					"x": 410,
-					"y": 220,
-					"type": "link",
-					"path": "/Applications"
-				}
-			]
-		},
-		"win": {
-			"target": [
-				"nsis",
-				"msi"
-			]
-		},
-		"linux": {
-			"target": [
-				"deb",
-				"rpm",
-				"snap",
-				"AppImage"
-			],
-			"category": "Development"
-		},
 		"directories": {
 			"buildResources": "resources",
 			"output": "release"
-		},
-		"publish": {
-			"provider": "github",
-			"owner": "electron-react-boilerplate",
-			"repo": "electron-react-boilerplate",
-			"private": false
 		}
 	},
 	"homepage": "https://github.com/electron-react-boilerplate/electron-react-boilerplate#readme",
@@ -212,10 +180,5 @@
 		"url": "https://opencollective.com/electron-react-boilerplate-594"
 	},
 	"browserslist": "electron 1.6",
-	"husky": {
-		"hooks": {
-			"pre-commit": "lint-staged"
-		}
-	},
 	"productName": "DEMO(TEST)"
 }

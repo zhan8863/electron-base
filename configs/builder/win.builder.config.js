@@ -32,7 +32,7 @@ const config = () => {
         target: 'nsis-web',
         signingHashAlgorithms: [ 'sha256' ],
         icon: CONFIG.ICON,
-        publisherName: 'xiaomiFE',
+        // publisherName: 'xiaomiFE',
         requestedExecutionLevel: "requireAdministrator",
       },
     }

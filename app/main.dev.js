@@ -19,6 +19,28 @@ export default class AppUpdater {
   constructor() {
     log.transports.file.level = 'info';
     autoUpdater.logger = log;
+    autoUpdater.on('checking-for-update', ()=> {
+      console.log('checking-for-update')
+    })
+    autoUpdater.on('update-available', (ev, info)=> {
+      console.log(`update-available:${JSON.stringify(info)}`)
+    })
+    autoUpdater.on('update-not-available', (ev, info)=> {
+      console.log(`update-not-available:${JSON.stringify(ev)}${JSON.stringify(info)}`)
+    })
+    autoUpdater.on('error', (ev, err) => {
+      console.log('update-error', ev, err)
+    })
+    autoUpdater.on('download-progress', (progressObj)=> {
+      console.log('download-progress--->>>>', JSON.stringify(progressObj), Math.floor(progressObj.percent))
+    })
+    autoUpdater.on('update-downloaded', ()=> {
+      console.log('Update downloaded; will install in 1 seconds')
+      setTimeout(() => {
+        autoUpdater.quitAndInstall()
+      },         1000)
+
+    })
     autoUpdater.checkForUpdatesAndNotify();
   }
 }
@@ -37,7 +59,7 @@ if (
   require('electron-debug')();
 }
 
-const installExtensions = async () => {
+const installExtensions = async ()=>{
   const installer = require('electron-devtools-installer');
   const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
   const extensions = ['REACT_DEVELOPER_TOOLS', 'REDUX_DEVTOOLS'];
@@ -51,7 +73,7 @@ const installExtensions = async () => {
  * Add event listeners...
  */
 
-app.on('window-all-closed', () => {
+app.on('window-all-closed', ()=> {
   // Respect the OSX convention of having the application in memory even
   // after all windows have been closed
   if (process.platform !== 'darwin') {
@@ -59,7 +81,7 @@ app.on('window-all-closed', () => {
   }
 });
 
-app.on('ready', async () => {
+app.on('ready', async ()=> {
   if (
     process.env.NODE_ENV === 'development' ||
     process.env.DEBUG_PROD === 'true'
@@ -89,7 +111,7 @@ app.on('ready', async () => {
     }
   });
 
-  mainWindow.on('closed', () => {
+  mainWindow.on('closed', ()=> {
     mainWindow = null;
   });
 
