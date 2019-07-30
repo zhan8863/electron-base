@@ -10,7 +10,7 @@
  *
  * @flow
  */
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, globalShortcut } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
@@ -109,7 +109,12 @@ app.on('ready', async ()=> {
       mainWindow.focus();
     }
   });
-
+  globalShortcut.register('CommandOrControl+Shift+I', () => {
+    try {
+      BrowserWindow.getFocusedWindow().webContents.toggleDevTools()
+    } catch (e) {
+    }
+  })
   mainWindow.on('closed', ()=> {
     mainWindow = null;
   });
