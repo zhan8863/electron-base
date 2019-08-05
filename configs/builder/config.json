@@ -1,6 +1,6 @@
 {
   "VERSION": {
-    "TEST": "0.0.8",
+    "TEST": "0.0.10",
     "RELEASE": "0.0.1"
   },
   "UPDATE_URL": {
@@ -19,5 +19,5 @@
     "TEST": "com.mi.demo.test"
   },
   "DESCRIPTION": "MI HOME's project",
-  "ICON": "./resources/icon.ico"
+  "ICON": "./configs/builder/resources/icon.ico"
 }
