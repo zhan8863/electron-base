@@ -50,15 +50,20 @@ export default class Home extends Component {
     ipcRenderer.send('request_CHECK_UPDATE')
     // autoUpdater.checkForUpdatesAndNotify()
   }
-  openMessage () {
+  openMessage (type) {
     let options = {
       title: '信息框标题',
       body: '我是一条信息～～～',
     }
-    let myNotification = new window.Notification(options.title, options)
-    myNotification.onclick = () => {
-      this.setState({ message: '【你点击了信息框！！】' })
+    if (type) {
+      let myNotification = new window.Notification(options.title, options)
+      myNotification.onclick = () => {
+        this.setState({ message: '【你点击了信息框！！】' })
+      }
+    }  else {
+      ipcRenderer.send('request_SEND_MESSATGE')
     }
+
   }
   render() {
     const logo = (
@@ -79,7 +84,8 @@ export default class Home extends Component {
         <h3>{this.state.tips}</h3>
         <p>当前版本号：{remote.app.getVersion()}</p>
         <Link to={routes.COUNTER}>to Counter!!!@!</Link>
-        <Button type="primary"  onClick={this.openMessage.bind(this)}>打开一个通知(渲染进程)</Button>
+        <Button type="primary"  onClick={this.openMessage.bind(this, true)}>打开一个通知(渲染进程)</Button>
+        <Button type="primary"  onClick={this.openMessage.bind(this)}>打开一个通知(主进程)</Button>
       </div>
       // 下面的 Theme 是 HIUI 主题的写法，可将上面的代码注释掉，换成下面的，查看 HIUI 主题的写法
       // <Theme

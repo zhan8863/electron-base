@@ -10,7 +10,7 @@
  *
  * @flow
  */
-import { app, BrowserWindow, globalShortcut } from 'electron';
+import { app, BrowserWindow, globalShortcut, ipcMain } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import initListener from './main/listener'
 import log from 'electron-log';
