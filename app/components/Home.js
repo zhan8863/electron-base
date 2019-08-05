@@ -50,10 +50,10 @@ export default class Home extends Component {
     ipcRenderer.send('request_CHECK_UPDATE')
     // autoUpdater.checkForUpdatesAndNotify()
   }
-  openMessage (type) {
+  openMessage (e, type) {
     let options = {
       title: '信息框标题',
-      body: '我是一条信息～～～',
+      body: '我是一条信息～～～（直接在渲染进程中调用的）',
     }
     if (type) {
       let myNotification = new window.Notification(options.title, options)

@@ -10,7 +10,7 @@ export default () => {
   ipcMain.on(`request_SEND_MESSATGE`, async (e, args) => {
     new Notification({
       title: 'My Title',
-      body: 'anything'
+      body: '这是渲染进程调用主进程的通知 '
     }).show()
   })
 }

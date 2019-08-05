@@ -68,6 +68,16 @@ const installExtensions = async ()=>{
     extensions.map(name => installer.default(installer[name], forceDownload))
   ).catch(console.log);
 };
+function setAppUserModelId() {
+  var updateDotExe = path.join(path.dirname(process.execPath), '..', 'update.exe');
+
+  var packageDir = path.dirname(path.resolve(updateDotExe));
+  var packageName = path.basename(packageDir);
+  var exeName = path.basename(process.execPath).replace(/\.exe$/i, '');
+
+  global.appUserModelId = `com.squirrel.${exeName}`;
+  app.setAppUserModelId(global.appUserModelId);
+}
 
 /**
  * Add event listeners...
@@ -82,6 +92,7 @@ app.on('window-all-closed', ()=> {
 });
 
 app.on('ready', async ()=> {
+  app.setAppUserModelId('com.mi.demo.test')
   if (
     process.env.NODE_ENV === 'development' ||
     process.env.DEBUG_PROD === 'true'
